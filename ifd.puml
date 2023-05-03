@@ -1,0 +1,47 @@
+@startuml ifd
+
+title Информационные потоки типового предприятия
+
+participant "Отдел продаж" as sales
+participant "Бухгалтерия" as accounting
+participant "Отдел кадров" as hr
+participant "Генеральный директор" as ceo
+participant "Производственное\nподразделение" as production
+participant "Отдел ИТ" as it
+
+==Кадровая работа==
+
+hr -> ceo : Информация о кандидатах
+ceo -> hr : Приказы о приёме на работу
+hr -> accounting : Информация о сотрудниках
+hr -> it : Информация о сотрудниках
+
+==Деятельность предприятия==
+
+sales -> ceo : Договор с клиентом
+ceo -> sales : Подписанный договор
+
+sales -> production : Информация о заказе
+production -> sales : Информация о выполненных работах
+sales -> accounting : Информация о проведённых сделках
+
+accounting -> ceo : Финансовая отчётность
+it -> ceo : Отчётность об обработке КИ
+
+==Зарплата==
+
+accounting -> sales : Информация о начислении з/п
+accounting -> hr : Информация о начислении з/п
+accounting -> ceo : Информация о начислении з/п
+accounting -> production : Информация о начислении з/п
+accounting -> it : Информация о начислении з/п
+
+==Техподдержка==
+
+production -> it : Заявки на тех. поддержку
+ceo -> it : Заявки на тех. поддержку
+hr -> it : Заявки на тех. поддержку
+accounting -> it : Заявки на тех. поддержку
+sales -> it : Заявки на тех. поддержку
+
+@enduml
