@@ -1,0 +1,14 @@
+@startuml
+nwdiag {
+    internet [shape = cloud]
+    internet -- pfsense
+    network ЛВС {
+        pfsense [address = "192.168.14.1"]
+        address = "192.168.14.0/24"
+
+        dc [address = "192.168.14.50", description="Контроллер домена\ndc.astra.ald"]
+        server [address = "192.168.14.51", description="Файловый сервер\nshare.astra.ald"]
+        client [address = "192.168.14.x", description="Клиент\nclient.astra.ald"]
+    }
+}
+@enduml

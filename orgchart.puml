@@ -1,4 +1,5 @@
 @startwbs orgchart
+skinparam DefaultFontSize 20
 
 *[#Salmon] Генеральный директор
 

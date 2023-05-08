@@ -1,15 +1,16 @@
 @startuml model
 
 start
-:Установка Astra Linux SE 1.7;
-if (ald был установлен при установке ОС?) then (да)
-else (нет)
+:Установка и конфигурация ВМ PfSense;
+:Установка Astra Linux SE 1.7 на ВМ КД и клиентов;
+fork
 :Установка пакета ald;
-endif
 :Конфигурация ald;
 :Создание схемы LDAP;
 :Заполнение БД;
+fork again
 :Конфигурация клиентов;
+end fork
 :Тестирование службы каталогов;
 end 
 @enduml
