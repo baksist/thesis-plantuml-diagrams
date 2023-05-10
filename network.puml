@@ -1,9 +1,9 @@
 @startuml
 nwdiag {
-    internet [shape = cloud]
+    internet [shape = cloud, description="Интернет"]
     internet -- pfsense
     network ЛВС {
-        pfsense [address = "192.168.14.1"]
+        pfsense [address = "192.168.14.1", description="pfsense.astra.ald\nМаршрутизатор + DNS"]
         address = "192.168.14.0/24"
 
         dc [address = "192.168.14.50", description="Контроллер домена\ndc.astra.ald"]
