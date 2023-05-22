@@ -9,8 +9,6 @@ skinparam DefaultFontSize 20
 **** client.example.ru
 *** Domain Controllers
 **** dc.example.ru
-*** Domain File Servers
-**** share.example.ru
 
 ** Пользователи
 

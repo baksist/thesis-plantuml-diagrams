@@ -7,7 +7,6 @@ nwdiag {
         address = "192.168.14.0/24"
 
         dc [address = "192.168.14.50", description="Контроллер домена\ndc.example.ru"]
-        server [address = "192.168.14.51", description="Файловый сервер\nshare.example.ru"]
         client [address = "192.168.14.x", description="Клиент\nclient.example.ru"]
     }
 }
