@@ -1,0 +1,8 @@
+@startwbs dirservices
+
+* Службы каталогов
+** Microsoft Active Direcotry
+** OpenLDAP
+** Astra Linux Directory
+
+@endwbs
