@@ -1,0 +1,49 @@
+@startuml ifd
+
+title Информационные потоки типового предприятия
+
+skinparam defaultFontName Helvetica
+skinparam BoxPadding 10
+skinparam ParticipantPadding 50
+skinparam TitleFontSize 40
+skinparam DefaultFontSize 30
+skinparam ArrowThickness 3
+
+box "Внешние сущности" #f0f0f0
+participant "Соискатель" as candidate
+end box
+
+box "Типовое предприятие" #f0f0f0
+participant "Бухгалтерия" as accounting
+participant "Отдел кадров" as hr
+participant "Генеральный директор" as ceo
+participant "Отдел ИТ" as it
+end box
+
+==Кадровая работа==
+
+group #d5d5d5  Приём на работу  
+    candidate -> hr : Резюме
+    hr -> candidate : Информация о прохождении собеседования
+    group #ffdbdb ПДн соискателей
+        candidate -> hr : Пакет документов
+    end
+    hr -> ceo : Информация о кандидатах
+    ceo -> hr : Приказы о приёме на работу
+    hr -> candidate : Информация о приёме на работу
+end
+
+group #d5d5d5 Учёт сотрудников и увольнение  
+    group #ffdbdb ПДн сотрудников
+        hr -> accounting : Информация о новых сотрудниках
+        hr -> it : Информация о новых сотрудниках
+    end
+    it -> candidate : Учётные данные в корпоративных ресурсах
+    candidate -> hr : Заявление об увольнении
+    hr -> ceo : Сведения об увольняемых сотрудниках
+    ceo -> hr : Приказы об увольнении
+    hr -> accounting : Информация об уволенных сотрудниках
+    hr -> it : Информация об уволенных сотрудниках
+end
+
+@enduml

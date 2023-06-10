@@ -1,0 +1,73 @@
+@startuml ifd
+
+title Информационные потоки типового предприятия
+
+skinparam defaultFontName Helvetica
+skinparam BoxPadding 5
+skinparam TitleFontSize 40
+skinparam DefaultFontSize 30
+skinparam ArrowThickness 3
+
+box "Внешние сущности" #f0f0f0
+participant "Клиент" as client
+participant "Налоговая служба" as irs
+end box
+
+box "Типовое предприятие" #f0f0f0
+participant "Отдел продаж" as sales
+participant "Бухгалтерия" as accounting
+participant "Генеральный директор" as ceo
+participant "Производственное подразделение" as production
+participant "Отдел ИТ" as it
+end box
+
+==Деятельность предприятия==
+group #LightGrey Предоставление услуг
+    client -> sales : Заявка и техническое задание
+    sales -> production : Техническое задание
+    production -> sales : Обратная связь по ТЗ
+    sales -> client : Обратная связь по ТЗ
+    client -> sales : Согласованное ТЗ
+    group #ffdbdb Коммерческая тайна
+        client -> sales : Договор
+        sales -> ceo : Договор с клиентом
+        ceo -> sales : Подписанный договор
+        sales -> client : Подписанный договор
+    end
+    sales -> production : Согласованное ТЗ
+    sales -> production : Информация о начале работ
+    production -> sales : Информация о выполненных работах
+    sales -> client : Информация о выполненных работах
+    group #ffdbdb Коммерческая тайна
+        client -> sales : Информация об оплате по договору
+    end
+
+end
+group #ffdbdb Коммерческая тайна
+    sales -> accounting : Информация о проведённых сделках
+    accounting -> ceo : Финансовая отчётность
+end
+accounting -> irs : Информация об уплате налогов
+group #ffdbdb Отчётность по ИБ
+    it -> ceo : Отчётность об обработке персональных данных
+    it -> ceo : Отчётность об обработке коммерческой тайны
+end
+
+group #d5d5d5 Поддержка и развитие ИТ и ИБ
+    it -> ceo : Предложения по усовершенствованию ИТ-инфраструктуры
+    ceo -> it : Приказ об усовершенствовании ИТ-инфраструктуры
+    group #ffdbdb Коммерческая тайна
+        it -> accounting : Запрос средств на реализацию проектов
+        accounting -> it : Информация о выделенных средствах
+    end
+    it -> ceo : Отчётность по поддержке и усовершенствованию ИТ
+    group #ffdbdb Коммерческая тайна
+        it -> ceo : Предложения по реализации мер ИБ и внедрению СЗИ
+        ceo -> it : Приказ о реализации мер ИБ и внедрению СЗИ
+        it -> accounting : Запрос средств на реализацию проектов
+        accounting -> it : Информация о выделенных средствах
+        it -> ceo : Отчётность по поддержке и усовершенствованию ИБ
+    end
+end
+
+@enduml

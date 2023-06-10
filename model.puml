@@ -1,5 +1,7 @@
 @startuml model
 
+skinparam DefaultFontSize 20
+
 |pfsense|
 start
 :Создание и настройка\nвиртуальной машины\nв гипервизоре;
